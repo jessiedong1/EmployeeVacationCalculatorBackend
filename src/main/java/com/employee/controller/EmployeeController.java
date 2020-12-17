@@ -38,7 +38,8 @@ public class EmployeeController {
 			if(count>=20)
 				empList.put(1000+count,new Manager(1000+count, firstnames[count%5]+lastnames[count%5]));
 			count++;
-		}		
+		}
+		empList.get(1001).work(100);
 	}
 	@GetMapping("/all")
 	public Object[] getAllEmployee(){
