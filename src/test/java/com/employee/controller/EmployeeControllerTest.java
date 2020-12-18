@@ -1,8 +1,5 @@
 package com.employee.controller;
 
-import com.employee.entity.Employee;
-import com.employee.entity.HourlyEmployee;
-import com.employee.entity.Manager;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -15,10 +12,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,12 +33,30 @@ public class EmployeeControllerTest {
     }
 
     @Test
-    void workShouldWork() throws Exception{
+    void HourlyEmployeeWorkShouldWork() throws Exception{
         RequestBuilder request=MockMvcRequestBuilders.get("/employee/updateworkday?id=1001&days=230")
                 .contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isAccepted())
                 .andExpect(content().string("8.0"))
+                .andReturn();
+    }
+    @Test
+    void ManagerWorkShouldWork() throws Exception{
+        RequestBuilder request=MockMvcRequestBuilders.get("/employee/updateworkday?id=1028&days=230")
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(request)
+                .andExpect(status().isAccepted())
+                .andExpect(content().string("26.0"))
+                .andReturn();
+    }
+    @Test
+    void SalariedEmployeeWorkShouldWork() throws Exception{
+        RequestBuilder request=MockMvcRequestBuilders.get("/employee/updateworkday?id=1018&days=230")
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(request)
+                .andExpect(status().isAccepted())
+                .andExpect(content().string("13.0"))
                 .andReturn();
     }
     @Test
@@ -64,7 +75,7 @@ public class EmployeeControllerTest {
                 .contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isAccepted())
-                .andExpect(content().string("1.0"))
+                .andExpect(content().string("6.0"))
                 .andReturn();
     }
 

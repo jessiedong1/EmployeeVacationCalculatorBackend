@@ -21,21 +21,12 @@ public abstract class Employee {
 		return workdays;
 	}
 
-	public void setWorkdays(int workdays) {
-		this.workdays = workdays;
-	}
-
 	public long getId() {
 		return id;
 	}
 	public String getName() {
 		return name;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public double getVacationDays() {
 		return vacationDays;
 	}
